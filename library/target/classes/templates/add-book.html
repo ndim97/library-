@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new book</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Library</a>
+    </nav>
+    <br>
+    <br>
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class = "text-center">Add new book</h1>
+                <div class = "card-body">
+                    <form th:action="@{/books/add}" method="post">
+
+                        <div class = "form-group">
+                            <label>Book name</label>
+                            <input type="text"
+                                   name="bookName"
+                                   class = "form-control"
+                                   placeholder="Enter book name"
+                            />
+                        </div>
+
+                        <div class = "form-group">
+                            <label>Year of publication</label>
+                            <input type="text"
+                                   name="publicationYear"
+                                   class = "form-control"
+                                   placeholder="Enter year"
+                            />
+                        </div>
+
+                        <div class = "form-group">
+                            <label>Author name</label>
+                            <input type="text"
+                                   name="authorName"
+                                   class = "form-control"
+                                   placeholder="Enter author name"
+                            />
+                        </div>
+
+                        <div class = "box-footer">
+                            <input type="submit" class="btn btn-success" value="Add"/>
+                           <!-- <a th:href="@{/books}" type="button" class="btn btn-success">Add</a> -->
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Library</a>
+    </nav>
+    <br>
+    <br>
+    <div sec:authorize="!isAuthenticated()" class = "container">
+        <h1>Welcome!</h1>
+        <br>
+        <h5>Choose option:</h5>
+        <br>
+        <div class = "row">
+            <div class = "col-lg-3">
+                <a sec:authorize="!isAuthenticated()" th:href="@{/register}" type="button" class="btn btn-success">Registration</a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}" type="button" class="btn btn-success">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <div sec:authorize="isAuthenticated()" class = "container">
+        <div class = "row">
+            <div class = "col-lg-3">
+                <h3>Hello,</h3>
+                <h3 sec:authentication="name"></h3>
+                <br>
+                <br>
+                <a th:href="@{/books}" type="button" class="btn btn-success">View all books</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/logout}" type="button" class="btn btn-success">Logout</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
